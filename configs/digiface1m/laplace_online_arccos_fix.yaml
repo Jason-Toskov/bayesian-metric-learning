@@ -18,14 +18,14 @@ check_val_every_n_epoch: 1
 
 # training
 train : True
-epochs : 2
+epochs : 20
 lr : 0.00001
 loss : "arccos"
 margin : 0.7
 distance : "euclidean"
 
 # data specific
-data_dir : "/home/abelmrini/data/"
+data_dir : "/scratch/toskov/data/"
 dataset : "digiface1m"
 batch_size : 64
 split_query_database : False
