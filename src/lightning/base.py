@@ -53,9 +53,8 @@ class Base(pl.LightningModule):
             self.distance = distances.LpDistance()
 
         self.criterion = configure_metric_loss(loss, distance, margin)
-
         self.place_rec = args.dataset in ("dag", "msls")
-        self.face_rec = args.dataset in ("lfw")
+        self.face_rec = args.dataset in ("lfw", "digiface1m")
         self.savepath = os.path.join(savepath, "results")
 
         if self.place_rec:
@@ -136,7 +135,6 @@ class Base(pl.LightningModule):
             ref_labels = None
 
         indices_tuple = self.miner(embeddings, labels, ref_emb, ref_labels)
-
         self.log("tuple_stats/an_dist", float(self.miner.neg_pair_dist))
         self.log("tuple_stats/ap_dist", float(self.miner.pos_pair_dist))
         self.log("tuple_stats/n_triplets", float(self.miner.num_triplets))
