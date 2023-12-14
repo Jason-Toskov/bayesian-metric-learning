@@ -15,7 +15,7 @@ class TrainDataset(Dataset):
         for label_name in os.listdir(dataset_path):
             try:
                 for image_path in os.listdir(os.path.join(dataset_path, label_name) ):
-                    image_paths.append(image_path)
+                    image_paths.append(os.path.join(dataset_path, label_name, image_path))
                     labels.append(int(label_name))
             except NotADirectoryError:
                 pass
@@ -43,7 +43,7 @@ class TrainDataset(Dataset):
     def __getitem__(self, idx):
 
         image = self.transform(
-            Image.open(os.path.join(self.image_path, self.images[idx])).convert("RGB")
+            Image.open(self.images[idx]).convert("RGB")
         )
         label = self.labels[idx]
 
@@ -59,7 +59,7 @@ class TestDataset(Dataset):
         for label_name in os.listdir(dataset_path):
             try:
                 for image_path in os.listdir(os.path.join(dataset_path, label_name) ):
-                    image_paths.append(image_path)
+                    image_paths.append(os.path.join(dataset_path, label_name, image_path))
                     labels.append(int(label_name))
             except NotADirectoryError:
                 pass
@@ -87,7 +87,7 @@ class TestDataset(Dataset):
     def __getitem__(self, idx):
 
         image = self.transform(
-            Image.open(os.path.join(self.image_path, self.images[idx])).convert("RGB")
+            Image.open(self.images[idx]).convert("RGB")
         )
         label = self.labels[idx]
 
