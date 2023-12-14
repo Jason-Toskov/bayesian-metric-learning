@@ -23,7 +23,7 @@ class TrainDataset(Dataset):
 
         labels = np.array(labels)
         image_paths = np.array(image_paths)
-        idx = labels <= 1000 # TODO what split are we going to choose
+        idx = labels <= 1600 # TODO what split are we going to choose
         self.labels = labels[idx]
         self.images = image_paths[idx]
 
@@ -102,7 +102,7 @@ class TestDataset(Dataset):
 
         labels = np.array(labels)
         image_paths = np.array(image_paths)
-        idx = labels > 1000 # TODO what split are we going to choose
+        idx = labels > 1600 # TODO what split are we going to choose
         self.labels = labels[idx]
         self.images = image_paths[idx]
 
