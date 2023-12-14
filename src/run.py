@@ -76,7 +76,10 @@ def main(
     else:
         raise NotImplementedError(f"Dataset {config.dataset} not implemented")
     data_module.setup()
+
     config["dataset_size"] = data_module.train_dataset.__len__()
+
+
 
     name = f"{sweep_name}{config.dataset}/{config.model}/{args.seed}"
     if "laplace" in config.model:
@@ -88,7 +91,7 @@ def main(
 
     # setup logger
     os.makedirs("../logs", exist_ok=True)
-    logger = WandbLogger(save_dir=f"../logs", name=name, entity="cs433-jal", project="project-2")
+    logger = WandbLogger(save_dir=f"../logs", name=name, entity="abdellah_elmrini", project="bayesian_retrieval_local")
 
     # lightning trainer
     checkpoint_callback = ModelCheckpoint(
