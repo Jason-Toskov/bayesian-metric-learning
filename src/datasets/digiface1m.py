@@ -61,10 +61,10 @@ class TrainDataset(Dataset):
 
     def __getitem__(self, idx):
 
-        """image = self.transform(
-            Image.open( self.images[idx]).convert("RGB")
+        image = self.transform(
+            Image.open(self.images[idx]).convert("RGB")
         )
-        label = self.labels[idx]"""
+        label = self.labels[idx]
 
 
         qidx = self.qidx[idx]
