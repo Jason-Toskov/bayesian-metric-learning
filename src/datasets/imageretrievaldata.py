@@ -48,7 +48,7 @@ class ImageRetrievalDataModule(pl.LightningDataModule):
         elif stage == "test":
             self.test_dataset = TestDataset(self.data_dir)
 
-        if self.dataset in ("fashionmnist", "cub200", "cifar10", "lfw"):
+        if self.dataset in ("fashionmnist", "cub200", "cifar10", "lfw", "digiface1m"):
             self.ood_dataset = OODDataset(self.data_dir)
 
     def train_dataloader(self):
