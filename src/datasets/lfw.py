@@ -83,13 +83,21 @@ class TestDataset(data.Dataset):
         self.data = torchvision.datasets.LFWPeople(
             root, split="test", download=True, transform=transform
         )
+        
+        self.counter = 0
 
     def __len__(self) -> int:
         return self.data.__len__()
 
     def __getitem__(self, idx) -> Tuple[Tensor, int]:
         img, target = self.data.__getitem__(idx)
+        
+        if self.counter < 10:
+            self.counter += 1
+            print("Got LFW test item!!")
+        
         return img, target
+
 
     # def __getitem__(self, idx) -> Tuple[Tensor, Tensor, int]:
     #     img1, img2, target = self.data.__getitem__(idx)
