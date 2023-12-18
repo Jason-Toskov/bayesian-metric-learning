@@ -91,7 +91,7 @@ def main(
 
     # setup logger
     os.makedirs("../logs", exist_ok=True)
-    logger = WandbLogger(save_dir=f"../logs", name=name, entity="cs433-jal", project="project-2-new")
+    logger = WandbLogger(save_dir=f"../logs", name=name, entity="manetheren_personal", project="epfl-ml-project-2")
 
     # lightning trainer
     checkpoint_callback = ModelCheckpoint(
