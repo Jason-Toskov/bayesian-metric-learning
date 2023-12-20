@@ -43,7 +43,7 @@ if __name__ == '__main__':
     dtype = parse_data_arg()
 
     con, ar = parse_args(f"../configs/{dtype}/deterministic.yaml", 1)
-    if con.dataset not in ["msls"]:
+    if con.dataset not in ["msls", "digiface1m"]:
         run_training(con, ar)
         wandb.finish()
         run_training(*parse_args(f"../configs/{dtype}/deterministic.yaml", 2))
@@ -70,6 +70,6 @@ if __name__ == '__main__':
     run_training(*parse_args(f"../configs/{dtype}/mcdrop.yaml", 42))
     wandb.finish()
 
-    if con.dataset not in ["msls", "lfw"]:
+    if con.dataset not in ["msls", "lfw", "digiface1m"]:
         run_training(*parse_args(f"../configs/{dtype}/hib.yaml", 42))
         wandb.finish()
